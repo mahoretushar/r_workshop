@@ -1,0 +1,59 @@
+IF statement
+
+if (condition) {
+statement
+}
+
+If the condition is TRUE, the statement gets executed. But if it’s FALSE, nothing happens.
+
+Here, condition can be a logical or numeric vector, but only the first element is taken into consideration.
+
+In the case of numeric vector, zero is taken as FALSE, rest as TRUE
+
+x <- 5
+if(x > 0){
+print("Positive number")
+}
+
+IF Else Statement
+
+if (condition) {
+statement1
+} else {
+statement2
+}
+
+The else part is optional and is only evaluated if condition is FALSE.
+
+It is important to note that else must be in the same line as the closing braces of the if statement.
+
+x <- -5
+if(x > 0){
+print("Non-negative number")
+} else {
+print("Negative number")
+}
+
+if else if
+
+if…else…if statement allows you execute a block of code among more than 2 alternatives
+
+The syntax of if…else statement is:
+
+if ( condition) {
+statement1
+} else if ( condition2) {
+statement2
+} else if ( condition3) {
+statement3
+} else {
+statement4
+}
+
+x <- 0
+if (x < 0) {
+print("Negative number")
+} else if (x > 0) {
+print("Positive number")
+} else
+print("Zero")
