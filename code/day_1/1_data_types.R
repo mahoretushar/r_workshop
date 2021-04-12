@@ -9,6 +9,7 @@
 library(xlsx)
 
 a <- 20
+class(a)
 ?read.table
 ?read.csv
 golf <- read.csv('DEV_SAMPLE.csv')

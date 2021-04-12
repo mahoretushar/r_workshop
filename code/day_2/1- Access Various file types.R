@@ -4,9 +4,6 @@ fb<- read.csv("dataset_Facebook.csv", header = TRUE, sep = ";")
 
 View(fb)
 
-
-
-
 ?read.csv
 
 read.csv(file, header = TRUE, sep = ",", quote = "\"",
@@ -15,7 +12,7 @@ read.csv(file, header = TRUE, sep = ",", quote = "\"",
 
 #read.csv2 is used in countries that use a comma as decimal point and a semicolon as field separator.
 read.csv2()
-#addtional function- for reading csv and other formats like copy paste
+#additional function- for reading csv and other formats like copy paste
 #data.table package
 #separator is automatically recognized
 fread()
@@ -34,7 +31,8 @@ library(XML)
 ?xmlParse()
 # read json
 library(rjson)
-fromJSON()
+?fromJSON
+
 #foreign package to read octave, SAS, SPSS and other formats
 library(foreign)
 
