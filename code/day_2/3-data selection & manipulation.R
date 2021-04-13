@@ -2,17 +2,20 @@ require(dplyr)
 library()
 
 fb <- read.csv("dataset_Facebook.csv", header = TRUE, sep = ";")
+View(fb)
 
-a <- fb$Post.Hour
+a <- fb$Post.Hour #basic command
 a
 
-v <- fb[,2]
-View(v)
+v <- fb[,3]
+v
 
-u <- fb[1:10,2]
+u <- fb[1:10,2:6]
+class(u)
 View(u)
 
 z <- fb$Page.total.likes
+z
 
 a = mean(fb$Lifetime.Post.Total.Reach + fb$Page.total.likes + 
            fb$Lifetime.Post.Total.Impressions)
@@ -20,29 +23,30 @@ a
 
 b = with(fb, mean(Lifetime.Post.Total.Reach + Page.total.likes + 
                     Lifetime.Post.Total.Impressions))
-
 b
+
 View(fb)
 str(fb)
 
 library(dplyr)
 ?select
-Select<- select(fb, Category:Paid)
+
+Select <- select(fb, Category:Paid)
 View(Select)
 
 str(fb)
 Filter <- filter(fb, Lifetime.Post.Total.Reach > 3000)
-?arrange
-arranged <- arrange(Filter,Lifetime.Post.Total.Reach)
 
+?arrange
+arranged <- arrange(Filter, Lifetime.Post.Total.Reach)
 View(arranged)
+?sort #try this function
 
 ?mutate
-
 View(arranged)
-
 str(arranged)
 
+?mutate
 arranged %>% mutate(
   comment.square = comment ^ 2,
   likeo = like + 2
@@ -55,15 +59,12 @@ arranged <- arranged %>% mutate(
   likeo = like + 2,
   )
 
-
-
 str(fb)
 
 #dataframe$columnname = as.numeric/factor(dataframe$columnname)
 
 fb$comment <- as.numeric(fb$comment)
 fb$Category <- as.factor(fb$Category)
-
 
 
 View(fb)
@@ -86,7 +87,7 @@ View(reach)
 
 str(fb)
 ?select
-reach1 <- select(fb,Lifetime.Post.reach.by.people.who.like.your.Page,comment  )
+reach1 <- select(fb,Lifetime.Post.reach.by.people.who.like.your.Page,comment)
 View(reach1)
 #ends_with() = Select columns that end with a character string
 #contains() = Select columns that contain a character string
@@ -112,4 +113,4 @@ LA2017_candidatebye <- read.xlsx("LA 2017.xls", sheetIndex = 3)
 
 ?merge
 plxsell <- merge(LA2017_candidate, LA2017_candidatebye, all.x = TRUE, all.y = TRUE)
-
+View(plxsell)
