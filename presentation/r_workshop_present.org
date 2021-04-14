@@ -9,6 +9,16 @@
 #+AUTHOR: Prof. T. R. Mahore
 #+DATE: April 11 2021 to April 18 2021
 
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+#+HTML_HEAD: <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+#+SETUPFILE: https://github.com/paulzql/org-html-themes/blob/master/setup/theme-readtheorg.setup
+
+
+
 * Contents
 
 1. Machine Learning and Data Science Introduction
@@ -511,6 +521,331 @@ Packages
 6. ScatterPlot3D
 
 * Applied Ststistics for Machine Learning
+Necessary EVIL 🙂
+
+** Introduction to Applied Statistics with Variables and Sample Size
+
+*** Variables
+
+- In math a variable is a alphabetic character which represent a value
+
+- Variables are also used in programming where they are used for almost similar purpose and contain/represent a value
+
+- In data science, variables are measured, manipulated and explored to identify it's value or the output of an equation
+
+- For example: BMI, weight etc.
+
+*** Types of Variables
+
+- *Nominal:* These are variables with two or more categories without any regard for ordering. For example, in polling data from a survey, the variable state, or candidate names. The number of states and candidates are definite and it doesn't matter what order of state or candidate name has no significance in it's relative importance in explaining the data.
+
+- *Dichotomous:* A special case of nominal variables with exactly two categories such as gender, possible outcomes of a single coin toss, a survey questionnaire with a checkbox for telephone number as mobile or landline, or the outcome of election win or loss (assuming no tie).
+
+- *Ordinal:* Just like nominal variables, we can have two or more categories in the ordinal variables with an added condition that the categories are ordered. For example, a customer rating for a movie in Netflix or a product in Amazon. The variable rating has a relative importance on a scale of 1 to 5, 1 being the lowest rating and 5 the highest for a movie or a product by a particular customer.
+
+- *Continous Variables:* Continous variables are subdivided into Interval and Ratio:
+
+  + Interval: The basic distinction is that they can be measured along a continous rnge and they have a numerical value. For exmple, the temperature in degrees Celsius or Fahrenheit is an interval variable. Note here that the temperature at 0℃ is not the absolute zero, which simply means 0℃ has certain degree of temperature measure than just saying the value means none or no measure.
+
+  + Ratio: In contrast, ration variables include distance, mass, and height. Ratio reflects the fact that you can use the ration of measurements. So, for example, a distance of 10 meters is twice the distance if 5 meters. A value 0 for a ratio variable means a none or no measure.
+
+*** Size of the Sample
+
+- There is also one other important factor influencing variable and the outcome, and that is *"size of the sample"*. The smaller the size, higher the probablity of getting fake pattern whereas in bigger samples, chances of identifying a pattern closer to reality is *"high"*.
+
+- Therefore it is important to pay attentation to the sample size in data science and carrying out any research project.
+
+- If the sample size is small, the result will not be statistically significant.
+
+** Descriptive vs Inferior Analysis
+
+*** Descriptive Statistics/Analysis
+
+It could be defined as the process of sumarizing data numerically to represent it in a compact and meaningful way where the representation help reader in understanding the broad overview of the data. It is used to represent the distribution pattern of a data. It is not based on probablity theory and it is solely used to read the data rather than deriving any forecasting from it.
+
+Descriptive analysis is a quantitative study of the sample and use following values to summarize the data:
+
+1. Mean
+2. Standard Error
+3. Mode
+4. Standard Deviation
+5. Sample Variance
+6. Kurtosis
+7. Skewness
+8. Range
+9. Minimum Value
+10. Mazimum Value
+11. Sum
+12. Count
+
+*** Inferential Analysis
+
+As the term suggest, analysis to derive inferences from a data is called inferential analysis. Objective of Inferential Analysis is to produce actionable information which can be used to create business strategies by figuring out the relationship between variables, level and other factors involved in a study.
+
+** Mean, Median, Mode and Range
+
+*** Mean
+
+- Mean is sum of all observations in a sample divided by the total number of observations
+
+- Example:
+  #+begin_example
+  4,3,13,26
+  Total Observations = 4
+  Mean = (4+3+13+26)/4 = 11.5
+  #+end_example
+
+*** Median
+
+- Median is the middle most observation when you arrange data in ascending order. Median is such that 50% of the observations are above the median and 50% of the observations are below the median
+
+- Median for odd numbers = number of observation + 1/2 (the formula yields the serial number)
+
+- Example:
+
+  #+begin_example
+  4,3,13,26,36
+  Median = 5+1/2 = 3
+  It means 3rd number (after organizing all the numbers in ascending order), in this case it is 13
+  #+end_example
+
+- If the numbers are even like in the given below example, we need to add 2 numbers in the middle and take the mean of them as median.
+
+- Example:
+
+  #+begin_example
+  4,3,13,26
+  In ascended order - 3,4,13,26
+  Mean of 2 middle numbers = 4+13/2 = 8.5
+  #+end_example
+
+*** Mode
+
+- Most frequent number in a given series is called mode.
+
+- Example:
+
+  #+begin_example
+  1,3,5,3,9,12
+  #+end_example
+
+- 3 appears twice whereas other numbers appear only once, therefore it is mode.
+
+*** Range
+
+- Ranger is the difference between max and min value
+
+- Example:
+
+  #+begin_example
+  1,3,5,3,9,12
+  Range = 12-1 = 1
+  #+end_example
+
+** Variance and Standard Deviation
+
+*** Variance
+
+- It is squared difference from the mean or a number, add all the difference & calculate its mean. Note if you are taking a sample insted of population, you should use N-1.
+
+|------------+--------------+--------------------|
+| *Population* | *Value - Mean* | Variance (Squared) |
+|------------+--------------+--------------------|
+|         12 |         -4.8 |              23.04 |
+|         14 |         -2.8 |               7.84 |
+|         18 |          1.2 |               1.44 |
+|         22 |          5.2 |              27.04 |
+|         18 |          1.2 |               1.44 |
+|------------+--------------+--------------------|
+|       16.8 |              |               60.8 | Sum
+|------------+--------------+--------------------|
+|            |              |              12.16 | Variance
+|            |              |        3.487119155 | Standard Deviation
+|------------+--------------+--------------------|
+
+- The smaller the variance, the closer the numbers are to the mean nand the larger the variance, the farther away the numbers are from the mean.
+
+- In this table, add all the squared differences and calculate their mean
+
+- Variance = 60.8/5 = 12/6
+
+*** Standard Deviation
+
+- It is the square root of variance and represented by sigma sign
+
+- It represent the dispersion/spread of the sample
+
+- It is the square root of variance
+
+|--------+--------------+---------|
+| *Sample* | *Value - Mean* | Squared |
+|--------+--------------+---------|
+|     12 |         -4.4 |   19.36 |
+|     14 |         -2.8 |    7.84 |
+|     18 |          1.2 |    1.44 |
+|     22 |          5.2 |    27.4 |
+|     18 |          1.2 |    1.44 |
+|--------+--------------+---------|
+|   16.8 |              |   57.12 | Sum
+|        |              |    12.6 | Variance
+|        |              |    3.48 | Standard Deviation
+|--------+--------------+---------|
+
+- Square root of 12.6 is 3.48 which is Standard Deviation
+
+** Standard Error, Skewness with Kurtosis
+
+*** Standard Error
+
+- Sample Statistic = mean
+
+- Standard deviation of the sample statistic is called standard error
+
+- Several means can be calculated for several samples and their distribution is called sampling distribution of the sampling mean
+
+- Standard error is the ratio of standard deviation and square root of the sample size
+
+- For example: in the class of 60, you take a sample of 4
+
+- Mean is 10 marks
+
+- Standard deviation is 8
+
+- Standard error for sampling distribution would be 8/square root of 4
+
+- 8/sqrt(4)
+
+*** Skewness
+
+- Skewness is the measure of the asymmetry or deviation from the symmetry in statistical analysis. It is basically used to represent the difference between mean and median. Skewness is usually divided into positive and negative skewness.
+
+- *Positive Skewness*: When there are more values at positive side (right side) in a curved graph, it is called as positive skewed or right skewed.
+
+- *Negative Skewness*: When there are more values at negative side (left side) in a curved graph, it is called as negative skewed or left skewed.
+
+*** Kurtosis
+
+- kurtosis is used to represent the *"Peakness"* of a distribution in probability. Kurtosis has following characteristics:
+
+  + High Kurtosis: tall peak, rapid decline in the tails
+  + Low Kurtosis: flat peaks, gradual decline in the tails
+  + Extreme case: uniform distribution
+
+** P Value with Confidence Interval
+
+*** Normal Distribution
+
+#+ATTR_HTML: :width 750px
+[[file:img_6.png]]
+
+*** Central Linit Theorem
+
+- Irrespective of the nature of the distribution of the original population (right skewed or left skewed), the distribution of the sample will be a normal distribution as the size of the sample goes up
+
+- Recomended number is 30
+
+#+ATTR_HTML: :width 750px
+[[file:img_7.png]]
+
+*** Confidence Level
+
+- Confidence Interval is a interval value used to represent the interval for a population parameter where a sample will have high probably of having that parameter of interest based on sample data. Confidence Interval is a type of Interval Estimation Techniques.
+
+- Confidence Interval is used to represent the probability and is expressed in precentage.
+
+- *Interval estimation* is the technique of using data to estimate an interval of probable values of an unknown population parameter.
+
+- *For example*: There is a population or data where value of a parameter is not known. If you conduct repeated sampling and conduct experiments using same procedure, certain value of intervals will contain the unknown parameter. If you conduct 100 test and 95 of them were found to contain the unknown parameter, your confidence interval will be 95%.
+
+- Confidence interval = sample statistic + Margin of error
+
+- where
+
+- Maargine of error = Critical value * Standard error of statistic
+
+**** How to Construct Confidence Level
+
+- Select a statistic that will be used to estimate a population parameter. We can use p value
+
+- Select a confidence level
+
+- Find the margin of error
+
+#+ATTR_HTML: :width 750px
+[[file:img_8.png]]
+
+
+*** p-Value
+
+- p-Value in statistic is used to measure the significance of results.
+
+- p-Value is the number which is measured to gauge the strength of the data. Conclusions are made based on the following output
+
+- P value less than 5% (0.05%) indicates higher statistical significance and approve rejection of null hypothesis which simply means that variable are strongly related to each other and final output.
+
+- P value more that 5% (0.05&) indicates lower statistical significance and support null hypothesis.
+
+- P value close to 5% is considered borderline.
+
+** T test and F ratio
+
+There are two types
+
+*** T Test for dependent samples
+
+- It is also known as *"Matched-Pairs t Test"*. It compares the mean of two samples which are related to each other. It is used when same sample could be used or tested under two conditions which are inter-related. For example, a group of persons undergoing machine learning training at a training center and then appering for exam. You can test the knowledge score of same group at the beining of the training and after training. Exams score to measure the difference in their skills due to the training course.
+
+*** T Test for independent samples
+
+- It is one of the most widely used statistical calculation concept. It is primarily used to determine the difference between means for two groups.
+
+- Now if we use the example mentioned under *"T Test for Dependent Sample"*, we can use the two randomly selected group from two different training institute preparing for machine learning and evaluate the difference in the mean of their scores after test.
+
+*** T Test
+Few important points
+
+- Few important factors to mention here are
+
+- Size of the sample (with bigger data more accuracy)
+
+- Difference between means of groups should be big enpugh to indicte a substantial trend
+
+- Average performance of the individuals is closer to the mean of their respective groups
+
+- You should use one tailed test when you expect only one group's mean to change or when you expect changes to happen only in one direction whereas when you expect changes to move in any direction or any group can move either direction (up or down), you should use ywo tail t test.
+
+*** F Test
+
+- It is test where distribution is F shaped. It is commonly used in ANOVA when means of the two population, having similar standard deviation, are equal.
+
+- Critical value is selected using the f table and then it is used to accept or reject the null hypothesis
+
+- F values are non-negative, distribution is asymmetric and two independent degrees of freedom, one for numerator and one for denominator.
+
+** Hypothesis Testing
+
+*** Types of Hypothesis
+
+- *Null Hypothesis*: Null hypothesis simply means that there is no relation between the two variable and data scientist use it to disapprove and reject a theory.
+
+- For example, if a ecommerce portal propose a theory that sales are up during a particular time in the year, null hypothesis will suggest that *"sales are not up during that time of year or time is not significant and has to nothing with the rising sales"*.
+
+- Null Hypothesis is represented by H_{0}
+
+- Null Hypothesis implies that an event is not due to any impact of the variable but, due to PURE CHANGE
+
+*** Alternative Hypothesis
+
+- Alternative hypothesis is the exact opposite of the null hypothesis. SO if we go back to our last example about sales in particular time of the year.
+
+- Alternative hypothesis will suggest that particular time is responsible for the increase in sale.
+
+*** Hypothesis Testing
+
+- You run various algorithms like Naive Bayes, KNN etc to accept or reject null hypothesis.
+
+- Usually if the p value is less than critical value or value of significance, you reject the null hypothesis
+
 * ANOVA with R
 * Linear Regression with R
 * Logistic Regression with R

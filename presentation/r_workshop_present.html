@@ -1,0 +1,1949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-04-14 Wed 09:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>*Machine Learning &amp; Data Science with R*</title>
+<meta name="author" content="Prof. T. R. Mahore" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title"><b>Machine Learning &amp; Data Science with R</b></h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6665457">1. Contents</a></li>
+<li><a href="#orgc62fca3">2. Machine Learning and Data Science Introduction</a>
+<ul>
+<li><a href="#org7304e12">2.1. Course Structure</a></li>
+<li><a href="#org2d425a3">2.2. Machine Learning and Data Science in Scope</a></li>
+<li><a href="#org074061e">2.3. Data Science Help</a></li>
+<li><a href="#orgd653c12">2.4. Data Science as Career</a>
+<ul>
+<li><a href="#orga249d51">2.4.1. Portfolio</a></li>
+<li><a href="#org5be2f09">2.4.2. How to make right decision for your career in data science and machine learning</a></li>
+<li><a href="#orgb40aa96">2.4.3. Business Analytics</a></li>
+<li><a href="#org14d8989">2.4.4. Machine Learning Engineer</a></li>
+<li><a href="#orga8779d3">2.4.5. Data Scientist</a></li>
+</ul>
+</li>
+<li><a href="#org623f2b5">2.5. Machine Learning Fundamentals</a>
+<ul>
+<li><a href="#org5122634">2.5.1. Artificial Intelligence (AI)</a></li>
+<li><a href="#org506d5f1">2.5.2. Machine Learning</a></li>
+<li><a href="#org0b13bb7">2.5.3. Deep Learning</a></li>
+<li><a href="#org69d498d">2.5.4. ML vs DL</a></li>
+<li><a href="#orgf418359">2.5.5. Type of Machine Learning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgdf6077b">3. Hand&rsquo;s on R: Programming for Machine Learning and Data Science</a>
+<ul>
+<li><a href="#orgc5728c3">3.1. R - Introduction with Installation of R Studio</a>
+<ul>
+<li><a href="#org99b451d">3.1.1. R Overview</a></li>
+<li><a href="#org105ad9c">3.1.2. R Advantage</a></li>
+<li><a href="#org28a2f63">3.1.3. R Installation</a></li>
+</ul>
+</li>
+<li><a href="#org7171233">3.2. Vectors, Matrix and Data Frame</a>
+<ul>
+<li><a href="#orgbac4c27">3.2.1. Vector and Matrix</a></li>
+<li><a href="#org774d90c">3.2.2. Data Frame</a></li>
+</ul>
+</li>
+<li><a href="#orgfa1c7ba">3.3. Data types in R</a></li>
+<li><a href="#org36a647a">3.4. Variables &amp; Objects</a></li>
+<li><a href="#org12c465a">3.5. Vectors &amp; Lists</a></li>
+<li><a href="#org55dd2a3">3.6. Data Wrangling with R</a></li>
+<li><a href="#org02fc5c4">3.7. Operators in R</a></li>
+<li><a href="#orga72236c">3.8. Loops in R</a></li>
+<li><a href="#org8a8b903">3.9. If Else in R</a></li>
+<li><a href="#org6affc61">3.10. Functions in R</a></li>
+</ul>
+</li>
+<li><a href="#org9a93e04">4. Assignment</a></li>
+<li><a href="#orgc1511e1">5. Machine Learning Fundamentals</a>
+<ul>
+<li><a href="#orgab80da5">5.1. Reading Various Kind&rsquo;s of Files with R</a></li>
+<li><a href="#orgdf522a6">5.2. Data Pre-Processing Introduction</a>
+<ul>
+<li><a href="#org986c35f">5.2.1. R Base functions</a></li>
+<li><a href="#org5bcd0b8">5.2.2. Merge</a></li>
+<li><a href="#org1ca8909">5.2.3. With function</a></li>
+<li><a href="#org623f089">5.2.4. More functions to manage data</a></li>
+<li><a href="#org9c679f9">5.2.5. dplyr</a></li>
+<li><a href="#org60593d2">5.2.6. tidyr</a></li>
+<li><a href="#org6992cef">5.2.7. lubridate</a></li>
+<li><a href="#org33f8aa6">5.2.8. Important Functions</a></li>
+<li><a href="#orgd54b5b8">5.2.9. Handeling Different types of Data</a></li>
+<li><a href="#org8acfacb">5.2.10. Dealing with Missing values &amp; NA&rsquo;s</a></li>
+<li><a href="#org943c6a5">5.2.11. Data source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc51a513">6. Data Visualization with R</a></li>
+<li><a href="#org01a4178">7. Applied Ststistics for Machine Learning</a>
+<ul>
+<li><a href="#orgc3a559e">7.1. Introduction to Applied Statistics with Variables and Sample Size</a>
+<ul>
+<li><a href="#org64ee039">7.1.1. Variables</a></li>
+<li><a href="#org846b7f2">7.1.2. Types of Variables</a></li>
+<li><a href="#orgb899d6b">7.1.3. Size of the Sample</a></li>
+</ul>
+</li>
+<li><a href="#org4d6a895">7.2. Descriptive vs Inferior Analysis</a>
+<ul>
+<li><a href="#org06a7b64">7.2.1. Descriptive Statistics/Analysis</a></li>
+<li><a href="#org82f78ed">7.2.2. Inferential Analysis</a></li>
+</ul>
+</li>
+<li><a href="#org810d242">7.3. Mean, Median, Mode and Range</a>
+<ul>
+<li><a href="#org5dd0498">7.3.1. Mean</a></li>
+<li><a href="#orgec2604b">7.3.2. Median</a></li>
+<li><a href="#org3f285af">7.3.3. Mode</a></li>
+<li><a href="#orga6e0f64">7.3.4. Range</a></li>
+</ul>
+</li>
+<li><a href="#org7d8fe2c">7.4. Variance and Standard Deviation</a>
+<ul>
+<li><a href="#orgf8f9c76">7.4.1. Variance</a></li>
+<li><a href="#orge47c3e3">7.4.2. Standard Deviation</a></li>
+</ul>
+</li>
+<li><a href="#org57fd3f6">7.5. Standard Error, Skewness with Kurtosis</a>
+<ul>
+<li><a href="#orgb0c0444">7.5.1. Standard Error</a></li>
+<li><a href="#orgf96a6d9">7.5.2. Skewness</a></li>
+<li><a href="#orgdce65f3">7.5.3. Kurtosis</a></li>
+</ul>
+</li>
+<li><a href="#org8b19334">7.6. P Value with Confidence Interval</a>
+<ul>
+<li><a href="#org7a02adc">7.6.1. Normal Distribution</a></li>
+<li><a href="#org35496e9">7.6.2. Central Linit Theorem</a></li>
+<li><a href="#org4982e2c">7.6.3. Confidence Level</a></li>
+<li><a href="#org3cabf35">7.6.4. p-Value</a></li>
+</ul>
+</li>
+<li><a href="#org6418f18">7.7. T test and F ratio</a>
+<ul>
+<li><a href="#org75735ac">7.7.1. T Test for dependent samples</a></li>
+<li><a href="#org4e32f05">7.7.2. T Test for independent samples</a></li>
+<li><a href="#org45520d3">7.7.3. T Test</a></li>
+<li><a href="#orgf4e20f2">7.7.4. F Test</a></li>
+</ul>
+</li>
+<li><a href="#orgd51c08c">7.8. Hypothesis Testing</a>
+<ul>
+<li><a href="#org76f370f">7.8.1. Types of Hypothesis</a></li>
+<li><a href="#org9a9f7a4">7.8.2. Alternative Hypothesis</a></li>
+<li><a href="#orga0b0a0f">7.8.3. Hypothesis Testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf06247f">8. ANOVA with R</a></li>
+<li><a href="#org54f38f1">9. Linear Regression with R</a></li>
+<li><a href="#orgc0e84b0">10. Logistic Regression with R</a></li>
+<li><a href="#org6aeae40">11. Dimension Reduction Technique</a></li>
+<li><a href="#org62fe25b">12. Clustering with K-Means</a></li>
+<li><a href="#org70672a8">13. Tree based models - CART &amp; Random Forest</a></li>
+<li><a href="#org93d5ef8">14. KNN - K Nearest Model</a></li>
+<li><a href="#orgf045bee">15. Naive Bayes</a></li>
+<li><a href="#org24c283e">16. Neural Networks with R</a></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org6665457" class="outline-2">
+<h2 id="org6665457"><span class="section-number-2">1</span> Contents</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>Machine Learning and Data Science Introduction</li>
+<li>Hand&rsquo;s on R - Programming for Machine Learning and Data Science</li>
+<li>Machine learning fundamentals</li>
+<li>Data visualization with R</li>
+<li>Applied Statistics for Machine learning</li>
+<li>Machine learning fundamentals (Models)</li>
+<li>ANOVA with R</li>
+<li>Linear Regression with R</li>
+<li>Logistic Regression with R</li>
+<li>Dimension reduction technique</li>
+<li>Clustering with K-Means</li>
+<li>Tree based models- CART &amp; Random Forest</li>
+<li>KNN- K Nearest Model</li>
+<li>Naive Bayes</li>
+<li>Neural Networks with R</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgc62fca3" class="outline-2">
+<h2 id="orgc62fca3"><span class="section-number-2">2</span> Machine Learning and Data Science Introduction</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org7304e12" class="outline-3">
+<h3 id="org7304e12"><span class="section-number-3">2.1</span> Course Structure</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li>R - Tool</li>
+<li>Data Visualisation</li>
+<li>Fundamentals of Applied Stastics</li>
+<li>Machine Learning Fundamentals</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org2d425a3" class="outline-3">
+<h3 id="org2d425a3"><span class="section-number-3">2.2</span> Machine Learning and Data Science in Scope</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>Machine Learning Fundamentals like supervised machine learnin, unsupervised machine learning etc.</li>
+
+<li>R Programming Language - Fundamentals of R, data selection &amp; manipulation with R, handling missiong values in R</li>
+
+<li>Reading various files in R</li>
+
+<li>Data visualization in R - Base functions to create bar plots, histograms, plots with libraries like ggplot2, maps, scatter3d plot &amp; lattice</li>
+
+<li>Applied statistics for machine Learning - descriptive analysis vs inferial analysis, t-test, confidence interval, standard error, standard deviation, varance, hypothesis testing and more</li>
+
+<li>Linear Regression with R</li>
+
+<li>Logistic Regression with R</li>
+
+<li>Dimension Reduction techniques covering PCA</li>
+
+<li>Clustering fundamentals with implementation of k-means in R</li>
+
+<li>Tree based machine learning techniques like CART and Random Forest</li>
+
+<li>KNN Implementation in R</li>
+
+<li>Naive Bayes in R</li>
+
+<li>Neural Network in R</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org074061e" class="outline-3">
+<h3 id="org074061e"><span class="section-number-3">2.3</span> Data Science Help</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>To University Forum - <a href="http://www.topuniversityforum.in/forums/artificial-intelligence-machine-learning.47/">http://www.topuniversityforum.in/forums/artificial-intelligence-machine-learning.47/</a></li>
+
+<li>Stack Overflow - <a href="https://stackoverflow.com/">https://stackoverflow.com/</a></li>
+
+<li>GOOGLE</li>
+</ul>
+
+
+<div id="orga4c5230" class="figure">
+<p><img src="img_1.png" alt="img_1.png" width="500px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd653c12" class="outline-3">
+<h3 id="orgd653c12"><span class="section-number-3">2.4</span> Data Science as Career</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Data Driven Managers, Digital Marketing, Machine Learning, Deep Learning, Deep Learning and Artificial Intelligence
+</p>
+</div>
+
+<div id="outline-container-orga249d51" class="outline-4">
+<h4 id="orga249d51"><span class="section-number-4">2.4.1</span> Portfolio</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ol class="org-ol">
+<li>Personal website/blog</li>
+<li>Github - <a href="https://github.com">https://github.com</a></li>
+<li>Linkedin</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org5be2f09" class="outline-4">
+<h4 id="org5be2f09"><span class="section-number-4">2.4.2</span> How to make right decision for your career in data science and machine learning</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+This is one of the most important decision for you and you should use following factors to determine he right choice
+</p>
+
+<ol class="org-ol">
+<li>Job Profile Relevance - Exact Match, Partial Match, No Match</li>
+
+<li>Job Experience and Current Position</li>
+
+<li>Passion or Need</li>
+
+<li>Other Resources like Time and Money you can spend to learn New Skills</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb40aa96" class="outline-4">
+<h4 id="orgb40aa96"><span class="section-number-4">2.4.3</span> Business Analytics</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+Businiss analytics is a field dedicated to make data driven decisions based on current and past data. It is closely related to business intelligence also. Both fields are essential but closely related so if you are looking for job and have experience in either of fields, you can easily cross over to others.
+</p>
+
+<p>
+People in this field hardly code and they primarily use tool&rsquo;s like Microsoft Excel, Tableau etc. These tool&rsquo;s generate Reports which are used for <b>BA</b> or <b>BI</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14d8989" class="outline-4">
+<h4 id="org14d8989"><span class="section-number-4">2.4.4</span> Machine Learning Engineer</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<ul class="org-ul">
+<li>You will find openings with Title <b>Machien Learning Engineer</b></li>
+
+<li>Job responsibilities are largly technical side of <b>Data Science</b> and need expertise in <b>R, SQL, PYTHON</b> etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga8779d3" class="outline-4">
+<h4 id="orga8779d3"><span class="section-number-4">2.4.5</span> Data Scientist</h4>
+<div class="outline-text-4" id="text-2-4-5">
+<ul class="org-ul">
+<li>As per HBR <b>&ldquo;Sexiest Job of 21st Century&rdquo;</b></li>
+
+<li>It&rsquo;s a broad term including all kind of roles related to data science <b>(AI, ML, DL)</b></li>
+
+<li>Actual role and responsibilities could be far more specific like domain experts, programmer (R or Python), tool expert like Tableau or SPSS. Role is much into <b>Data Analysis</b> with technology sorrounding it</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org623f2b5" class="outline-3">
+<h3 id="org623f2b5"><span class="section-number-3">2.5</span> Machine Learning Fundamentals</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Let&rsquo;s Dive
+</p>
+</div>
+
+<div id="outline-container-org5122634" class="outline-4">
+<h4 id="org5122634"><span class="section-number-4">2.5.1</span> Artificial Intelligence (AI)</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<ul class="org-ul">
+<li>It is the higher umbrella category covering all aspect of the space where machines are expected to use intelligence for decision making</li>
+
+<li><b>IBM Watson</b> is a common example of AI Tool</li>
+
+<li>It encompasses machine learning and Deep Learning Fields</li>
+
+<li>In reality, artificial intelligence is a broad field which has been derived from Math, Computer Science, Neuroscience and Artificial Psychology</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org506d5f1" class="outline-4">
+<h4 id="org506d5f1"><span class="section-number-4">2.5.2</span> Machine Learning</h4>
+<div class="outline-text-4" id="text-2-5-2">
+
+<div id="orgf6c4f3e" class="figure">
+<p><img src="img_2.png" alt="img_2.png" width="300px" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li><b>Machine Learning</b> is the application of Artificial Intelligence</li>
+
+<li>Machine Learning is a Subset of AI</li>
+
+<li>Machine Learning use stastical analysis to deliver results</li>
+
+<li>In Machine Learning, you define the <b>Features</b> you need to make <b>Predictions</b> or to perform a task like E-mail Classification</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b13bb7" class="outline-4">
+<h4 id="org0b13bb7"><span class="section-number-4">2.5.3</span> Deep Learning</h4>
+<div class="outline-text-4" id="text-2-5-3">
+
+<div id="org1dc2f73" class="figure">
+<p><img src="img_3.png" alt="img_3.png" width="250px" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Deep learning takes the automation a step ahead and you don&rsquo;t need to define the features</li>
+
+<li>It is practically a subset of <b>Machine Learning</b> and but different from the rest of the algorithms</li>
+
+<li>It is inspired by neuron and attempt is to make artificial neurons mimicking human neurons</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69d498d" class="outline-4">
+<h4 id="org69d498d"><span class="section-number-4">2.5.4</span> ML vs DL</h4>
+<div class="outline-text-4" id="text-2-5-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Machine Learning</b></th>
+<th scope="col" class="org-left"><b>Deep Learning</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Need lesser data than Deep Learning</td>
+<td class="org-left">Need more data</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Can work with CPU</td>
+<td class="org-left">Needs GPU for optimum performance</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Need to manually define the features</td>
+<td class="org-left">System can automatically figure that out</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Good &amp; Recommended when you need to</td>
+<td class="org-left">Recommended when your focus is on output,</td>
+</tr>
+
+<tr>
+<td class="org-left">control feature defination and recreation</td>
+<td class="org-left">and not on ability to define feature but</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">is not recommended when feature defination</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">is important</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf418359" class="outline-4">
+<h4 id="orgf418359"><span class="section-number-4">2.5.5</span> Type of Machine Learning</h4>
+<div class="outline-text-4" id="text-2-5-5">
+<ol class="org-ol">
+<li><p>
+Supervised Machine Learning
+</p>
+
+<p>
+In all types of machine learning algorithm, you train your code with existing data. If this data is Labeled and have details about the properties of data, it is called <b>Supervised Machine Learning</b>, you train your data with labeled data and then compare the results. For example, you are developing a algorithm to automatically detect Spam Emails. Non Spam Emails are called ham. So in this case, you will create a dataset with information on spam and ham emails, something like this:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Spam</b></th>
+<th scope="col" class="org-left"><b>Ham</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Subject Contain Free</td>
+<td class="org-left">Subject Dosen&rsquo;t Contain Free</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Subject Contain Win</td>
+<td class="org-left">Subject Dosen&rsquo;t Contain Win</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You will feed this data to your algorithm for Training Purpose, your code will learn and based on this, it will be able to make predictions in the future unlaneled dataset because it will know the rules of spam and ham emails.
+</p></li>
+
+<li><p>
+Unsupervised Machine Learning
+</p>
+
+<p>
+In unsupervised machine learning, training data is not labeled. So if we usethe last example, our training data will not be clearly marked as spam and ham. You will simply supply the data, your code will run on it and mark certain emails as Spam and Not Spam. You will evaluate it&rsquo;s performance and that&rsquo;s how it learns. This is usually used in case of business scenarios where you need to perform grouping or in case of this field, clustering. For example, let&rsquo;s say if you have a dataset of blood report of diabetic patient and you want to make certain groups. In this case you can simply create a algorithm which will create cluster of dataset with similar properties, let&rsquo;s say fasting blood level group with similar range.
+</p></li>
+
+<li><p>
+Reinforcement Machine Learning
+</p>
+
+<p>
+It is like carrot and stick approach where you train your code with rewards and punishment on each success and failure. So if they get their prediction right, they are rewarded and if they get their prediction wrong they are penalized. Self driving cars and chess playing bots are common example of this. This form of machine learning is required when there is a lot of uncertainty and software need to make real time decision.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf6077b" class="outline-2">
+<h2 id="orgdf6077b"><span class="section-number-2">3</span> Hand&rsquo;s on R: Programming for Machine Learning and Data Science</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgc5728c3" class="outline-3">
+<h3 id="orgc5728c3"><span class="section-number-3">3.1</span> R - Introduction with Installation of R Studio</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org99b451d" class="outline-4">
+<h4 id="org99b451d"><span class="section-number-4">3.1.1</span> R Overview</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li><b>R</b> Programming language is based on <b>S</b> language which was developed much earlier in 70&rsquo;s</li>
+
+<li>R Programming language was developed in 90&rsquo;s by <b>Ross Ihaka</b> and <b>Robert Gentleman</b> while working in the university of <b>Auckland</b></li>
+
+<li>R is an open source <b>GNU</b> project</li>
+
+<li>Compatible with all major OS - MacOS, Linux, Unix, Windows, platforms</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org105ad9c" class="outline-4">
+<h4 id="org105ad9c"><span class="section-number-4">3.1.2</span> R Advantage</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li>Compatible with MacOS, Linux, Windows</li>
+
+<li>Free</li>
+
+<li>Not so steep learning curve to begin with</li>
+
+<li>Tons of packages for machine learning so our life becomes easy</li>
+
+<li>Still one of the most widely used language for machine learning</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org28a2f63" class="outline-4">
+<h4 id="org28a2f63"><span class="section-number-4">3.1.3</span> R Installation</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<ul class="org-ul">
+<li>Step 1 - Download R - <a href="https://www.r-project.org/">https://www.r-project.org/</a></li>
+
+<li>Step 2 - Download R Studio - <a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7171233" class="outline-3">
+<h3 id="org7171233"><span class="section-number-3">3.2</span> Vectors, Matrix and Data Frame</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Know the basic before jumping into it
+</p>
+</div>
+
+<div id="outline-container-orgbac4c27" class="outline-4">
+<h4 id="orgbac4c27"><span class="section-number-4">3.2.1</span> Vector and Matrix</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<ul class="org-ul">
+<li>Sample <i>(observations)</i> size is 7 and there are 4 features <i>(variables)</i>. These 4 properties will be displayed in columns with 7 rows. First row will represent the name column.</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Name</b></th>
+<th scope="col" class="org-left"><b>Feature1</b></th>
+<th scope="col" class="org-left"><b>Feature2</b></th>
+<th scope="col" class="org-left"><b>Feature3</b></th>
+<th scope="col" class="org-left"><b>Feature4</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">name1</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name2</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name3</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name4</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name5</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name6</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">name7</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Matrix can be represented by 7x5</li>
+
+<li>7 Rows and 5 Columns</li>
+
+<li>Each row or column is a vector</li>
+
+<li>Entire dataset is a matrix. It is a multidimensional array (think of a spreadsheet), with multiple rows and columns</li>
+
+<li>representation: x<sub>j</sub><sup>i</sup></li>
+
+<li>i = serial/sequence number of sample</li>
+
+<li>j = serial/sequence number of dimension</li>
+
+<li>For matrix(X) - Capital letters are used, for vectors(x) - smallletters are used. But the concept remain same.</li>
+
+<li>So as in our example we have, 7 samples/observations, 4 features</li>
+
+<li>Therefore I can go upto 7 and I can go upto 4</li>
+
+<li>x<sub>3</sub><sup>4</sup>: Here we are talking about 4<sup>th</sup> sample out of 7 and 3<sup>rd </sup>Feature or 3<sup>rd</sup> column in the spreadsheet. It is the index value. So if the 36<sup>rd</sup> column is &ldquo;color&rdquo;, it means we are talking about color of 4<sup>th</sup> sample.</li>
+
+<li>Row vectors are represented by [x<sub>3</sub><sub>nil</sub><sup>49 </sup>+ x<sub>4</sub><sup>50</sup>]</li>
+
+<li>Column vectors are represented by [x<sub>3</sub><sup>49</sup>]
+[ + ]
+[x<sub>4</sub><sup>50</sup>]</li>
+
+<li></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org774d90c" class="outline-4">
+<h4 id="org774d90c"><span class="section-number-4">3.2.2</span> Data Frame</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<ul class="org-ul">
+<li>Tabular data structure with rows and columns</li>
+
+<li>Data frame is a stastical concept</li>
+
+<li>Usually Matrix will have only 1 type of data like numeric, character etc.</li>
+
+<li>A data frame can have multiple data types so one column could me numerical whereas other could be character</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa1c7ba" class="outline-3">
+<h3 id="orgfa1c7ba"><span class="section-number-3">3.3</span> Data types in R</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-R">library(lattice)
+xyplot(1:10 ~ 1:10)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org36a647a" class="outline-3">
+<h3 id="org36a647a"><span class="section-number-3">3.4</span> Variables &amp; Objects</h3>
+</div>
+<div id="outline-container-org12c465a" class="outline-3">
+<h3 id="org12c465a"><span class="section-number-3">3.5</span> Vectors &amp; Lists</h3>
+</div>
+<div id="outline-container-org55dd2a3" class="outline-3">
+<h3 id="org55dd2a3"><span class="section-number-3">3.6</span> Data Wrangling with R</h3>
+</div>
+<div id="outline-container-org02fc5c4" class="outline-3">
+<h3 id="org02fc5c4"><span class="section-number-3">3.7</span> Operators in R</h3>
+</div>
+<div id="outline-container-orga72236c" class="outline-3">
+<h3 id="orga72236c"><span class="section-number-3">3.8</span> Loops in R</h3>
+<div class="outline-text-3" id="text-3-8">
+
+<div id="orgf7e6d82" class="figure">
+<p><img src="img_5.png" alt="img_5.png" width="450px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a8b903" class="outline-3">
+<h3 id="org8a8b903"><span class="section-number-3">3.9</span> If Else in R</h3>
+</div>
+<div id="outline-container-org6affc61" class="outline-3">
+<h3 id="org6affc61"><span class="section-number-3">3.10</span> Functions in R</h3>
+</div>
+</div>
+<div id="outline-container-org9a93e04" class="outline-2">
+<h2 id="org9a93e04"><span class="section-number-2">4</span> Assignment</h2>
+<div class="outline-text-2" id="text-4">
+<ol class="org-ol">
+<li>How do you find more information about a function in R Studio?</li>
+
+<li>How do you install packages in R Studio?</li>
+
+<li>You need to load a excel file in R Studio, please write a compelete command to load it. Please note you will need to do something with the library in order to load it. You can use any name for your file.</li>
+
+<li>Load the data set and save it as a matrix.</li>
+
+<li>Write Command to find out the class of the Data.</li>
+
+<li>Write few data types in R.</li>
+
+<li>Create a variable with a number.</li>
+
+<li>Create a String Variable.</li>
+
+<li>Print variables created in last two questions.</li>
+
+<li>Create two numerical vectors.</li>
+
+<li>Create an object and multiply the 2 vectors created in last question.</li>
+
+<li>Create a list with 5 elements in R.</li>
+
+<li>Assign names to the elements in the List.</li>
+
+<li>Access the 1<sup>st</sup> and 4<sup>th</sup> element in the list created in question 12.</li>
+
+<li>Remove an element from the list created in question 12.</li>
+
+<li>Load the data frame in R Studio. After loding the data set name the columns in data set.</li>
+
+<li>Create a new object with a column and first 5000 rows selected from data frame created in question 16.</li>
+
+<li>Create a vector and an if-else block such that else block is executed.</li>
+
+<li>Create a for loop to print numbers upto 5.</li>
+
+<li>Create a while loop till number 6</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgc1511e1" class="outline-2">
+<h2 id="orgc1511e1"><span class="section-number-2">5</span> Machine Learning Fundamentals</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgab80da5" class="outline-3">
+<h3 id="orgab80da5"><span class="section-number-3">5.1</span> Reading Various Kind&rsquo;s of Files with R</h3>
+</div>
+<div id="outline-container-orgdf522a6" class="outline-3">
+<h3 id="orgdf522a6"><span class="section-number-3">5.2</span> Data Pre-Processing Introduction</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org986c35f" class="outline-4">
+<h4 id="org986c35f"><span class="section-number-4">5.2.1</span> R Base functions</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>Use &ldquo;$&rdquo; sign to select variables</li>
+
+<li>Use &ldquo;[row,column]&rdquo; to select rows and columns</li>
+
+<li>If you leave blank row value and enter only column in above command, all the rows will be selected and vice versa. Or use subset.</li>
+
+<li><p>
+You can use following command to select and update a column/variable.
+</p>
+
+<pre class="example" id="org5e37e86">
+dataframe$columnname = as.numeric/factor(dataframe$columnname)
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5bcd0b8" class="outline-4">
+<h4 id="org5bcd0b8"><span class="section-number-4">5.2.2</span> Merge</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li>merge(x,y,&#x2026;)</li>
+
+<li>Where &ldquo;x&rdquo; and &ldquo;y&rdquo; are two seperate data frames</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ca8909" class="outline-4">
+<h4 id="org1ca8909"><span class="section-number-4">5.2.3</span> With function</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<ul class="org-ul">
+<li><p>
+with
+</p>
+
+<pre class="example" id="org5e7c2a6">
+a = mean(fb$Lifetime.Post.Total.Reach + fb$page.total.likes + fb$Lifetime.Post.Total.Impressions)
+a
+</pre></li>
+
+<li><p>
+Using with() we can clean this up
+</p>
+
+<pre class="example" id="orgf41a201">
+a = with(fb, mean(Lifetime.Post.Total.Reach + page.total.likes + Lifetime.Post.Total.Impressions))
+a
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org623f089" class="outline-4">
+<h4 id="org623f089"><span class="section-number-4">5.2.4</span> More functions to manage data</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<ul class="org-ul">
+<li>order data</li>
+
+<li>sort data</li>
+
+<li>rbind &amp; cbind</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c679f9" class="outline-4">
+<h4 id="org9c679f9"><span class="section-number-4">5.2.5</span> dplyr</h4>
+<div class="outline-text-4" id="text-5-2-5">
+</div>
+<ol class="org-ol">
+<li><a id="orgdb90329"></a>Functions<br />
+<div class="outline-text-5" id="text-5-2-5-1">
+<ul class="org-ul">
+<li>select: return a subset of the columns of a data frame</li>
+
+<li>filter: extract a subset of rows from a data frame based on logical conditions</li>
+
+<li>arrange: reorder rows of a data frame</li>
+
+<li>rename: rename variable in a data frame</li>
+
+<li>mutate: add new variables/columns or transform existing variables</li>
+
+<li>sumarise/sumarize: generate summary statistics of different variables in data frame</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgb1b6469"></a>Arguments<br />
+<div class="outline-text-5" id="text-5-2-5-2">
+<ul class="org-ul">
+<li>The first argument is a data frame</li>
+
+<li>The subsequent arguments describe what to do with it, and you can refer to columns in the data frame directly without using the &ldquo;$&rdquo; operator (just use the names).</li>
+
+<li>The result is a new data frame</li>
+
+<li>Data frames must be properly formatted and annotated for this</li>
+
+<li>to all be useful</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org4998e59"></a>library(dplry)<br />
+<div class="outline-text-5" id="text-5-2-5-3">
+<ul class="org-ul">
+<li>Select Example: head(select(dataframe, column1:column-n))</li>
+
+<li>Filter Example:filter(select(dataframe, column1:column-n))</li>
+
+<li>Arrange: Reordering rows of a data frame (while preserving corrosponding order of other columns) is normally a pain to do in R</li>
+
+<li>Rename function</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org60593d2" class="outline-4">
+<h4 id="org60593d2"><span class="section-number-4">5.2.6</span> tidyr</h4>
+<div class="outline-text-4" id="text-5-2-6">
+<ul class="org-ul">
+<li>library(tidyr)</li>
+
+<li>gather(): takes multiple columns, and gathers them into key-value pairs (it makes wide data longer)</li>
+
+<li>spread(): takes two columns (key &amp; value) and spreads in to multiple columns (it makes long data wider)</li>
+
+<li>seperate(): given either regular expression or a vector of character positions turns a single character column into multiple columns</li>
+
+<li>extract(): given a regular expression with capturing groups, it turns each group into a new column. If the groups don&rsquo;t match, or the input is NA, the output will be NA.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6992cef" class="outline-4">
+<h4 id="org6992cef"><span class="section-number-4">5.2.7</span> lubridate</h4>
+<div class="outline-text-4" id="text-5-2-7">
+<ul class="org-ul">
+<li>This package is used to handle dates like time zones, calculation realated to time.</li>
+
+<li><p>
+as.duration(x) example:
+</p>
+
+<pre class="example" id="org63061e1">
+library(lubridate)
+x &lt;- interval(ymd("2018-01-01"),ymd("2018-09-18"))
+as.duration(x)
+
+[1] "22464000s (~37.14 weeks)"
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org33f8aa6" class="outline-4">
+<h4 id="org33f8aa6"><span class="section-number-4">5.2.8</span> Important Functions</h4>
+<div class="outline-text-4" id="text-5-2-8">
+<ol class="org-ol">
+<li>help() or ? followed by function name</li>
+<li>example()</li>
+<li>c(), scan()</li>
+<li>seq()</li>
+<li>rep()</li>
+<li>data()</li>
+<li>View()</li>
+<li>Make.names()</li>
+<li>str()</li>
+<li>read.csv(), read.tables()</li>
+<li>library(), require()</li>
+<li>dim()</li>
+<li>length()</li>
+<li>ls()</li>
+<li>rm() Removes an Item from memory</li>
+<li>names() Lists names of variables in the data.frame</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgd54b5b8" class="outline-4">
+<h4 id="orgd54b5b8"><span class="section-number-4">5.2.9</span> Handeling Different types of Data</h4>
+<div class="outline-text-4" id="text-5-2-9">
+<ol class="org-ol">
+<li>as.interger()</li>
+<li>as.numeric()</li>
+<li>as.character()</li>
+<li>as.data.frame()</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org8acfacb" class="outline-4">
+<h4 id="org8acfacb"><span class="section-number-4">5.2.10</span> Dealing with Missing values &amp; NA&rsquo;s</h4>
+<div class="outline-text-4" id="text-5-2-10">
+<ol class="org-ol">
+<li>Replace missing values with NA</li>
+<li>Replace NA with mean, median or mode</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org943c6a5" class="outline-4">
+<h4 id="org943c6a5"><span class="section-number-4">5.2.11</span> Data source</h4>
+<div class="outline-text-4" id="text-5-2-11">
+<ul class="org-ul">
+<li><a href="https://www.kaggle.com/c/titanic/data">https://www.kaggle.com/c/titanic/data</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc51a513" class="outline-2">
+<h2 id="orgc51a513"><span class="section-number-2">6</span> Data Visualization with R</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Packages
+</p>
+
+<ol class="org-ol">
+<li>Base Functions</li>
+<li>GGPlot2</li>
+<li>Lattice</li>
+<li>Tabplot</li>
+<li>Ploty</li>
+<li>ScatterPlot3D</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org01a4178" class="outline-2">
+<h2 id="org01a4178"><span class="section-number-2">7</span> Applied Ststistics for Machine Learning</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Necessary EVIL 🙂
+</p>
+</div>
+
+<div id="outline-container-orgc3a559e" class="outline-3">
+<h3 id="orgc3a559e"><span class="section-number-3">7.1</span> Introduction to Applied Statistics with Variables and Sample Size</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<div id="outline-container-org64ee039" class="outline-4">
+<h4 id="org64ee039"><span class="section-number-4">7.1.1</span> Variables</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<ul class="org-ul">
+<li>In math a variable is a alphabetic character which represent a value</li>
+
+<li>Variables are also used in programming where they are used for almost similar purpose and contain/represent a value</li>
+
+<li>In data science, variables are measured, manipulated and explored to identify it&rsquo;s value or the output of an equation</li>
+
+<li>For example: BMI, weight etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org846b7f2" class="outline-4">
+<h4 id="org846b7f2"><span class="section-number-4">7.1.2</span> Types of Variables</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<ul class="org-ul">
+<li><b>Nominal:</b> These are variables with two or more categories without any regard for ordering. For example, in polling data from a survey, the variable state, or candidate names. The number of states and candidates are definite and it doesn&rsquo;t matter what order of state or candidate name has no significance in it&rsquo;s relative importance in explaining the data.</li>
+
+<li><b>Dichotomous:</b> A special case of nominal variables with exactly two categories such as gender, possible outcomes of a single coin toss, a survey questionnaire with a checkbox for telephone number as mobile or landline, or the outcome of election win or loss (assuming no tie).</li>
+
+<li><b>Ordinal:</b> Just like nominal variables, we can have two or more categories in the ordinal variables with an added condition that the categories are ordered. For example, a customer rating for a movie in Netflix or a product in Amazon. The variable rating has a relative importance on a scale of 1 to 5, 1 being the lowest rating and 5 the highest for a movie or a product by a particular customer.</li>
+
+<li><b>Continous Variables:</b> Continous variables are subdivided into Interval and Ratio:
+
+<ul class="org-ul">
+<li>Interval: The basic distinction is that they can be measured along a continous rnge and they have a numerical value. For exmple, the temperature in degrees Celsius or Fahrenheit is an interval variable. Note here that the temperature at 0℃ is not the absolute zero, which simply means 0℃ has certain degree of temperature measure than just saying the value means none or no measure.</li>
+
+<li>Ratio: In contrast, ration variables include distance, mass, and height. Ratio reflects the fact that you can use the ration of measurements. So, for example, a distance of 10 meters is twice the distance if 5 meters. A value 0 for a ratio variable means a none or no measure.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb899d6b" class="outline-4">
+<h4 id="orgb899d6b"><span class="section-number-4">7.1.3</span> Size of the Sample</h4>
+<div class="outline-text-4" id="text-7-1-3">
+<ul class="org-ul">
+<li>There is also one other important factor influencing variable and the outcome, and that is <b>&ldquo;size of the sample&rdquo;</b>. The smaller the size, higher the probablity of getting fake pattern whereas in bigger samples, chances of identifying a pattern closer to reality is <b>&ldquo;high&rdquo;</b>.</li>
+
+<li>Therefore it is important to pay attentation to the sample size in data science and carrying out any research project.</li>
+
+<li>If the sample size is small, the result will not be statistically significant.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d6a895" class="outline-3">
+<h3 id="org4d6a895"><span class="section-number-3">7.2</span> Descriptive vs Inferior Analysis</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+<div id="outline-container-org06a7b64" class="outline-4">
+<h4 id="org06a7b64"><span class="section-number-4">7.2.1</span> Descriptive Statistics/Analysis</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+It could be defined as the process of sumarizing data numerically to represent it in a compact and meaningful way where the representation help reader in understanding the broad overview of the data. It is used to represent the distribution pattern of a data. It is not based on probablity theory and it is solely used to read the data rather than deriving any forecasting from it.
+</p>
+
+<p>
+Descriptive analysis is a quantitative study of the sample and use following values to summarize the data:
+</p>
+
+<ol class="org-ol">
+<li>Mean</li>
+<li>Standard Error</li>
+<li>Mode</li>
+<li>Standard Deviation</li>
+<li>Sample Variance</li>
+<li>Kurtosis</li>
+<li>Skewness</li>
+<li>Range</li>
+<li>Minimum Value</li>
+<li>Mazimum Value</li>
+<li>Sum</li>
+<li>Count</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org82f78ed" class="outline-4">
+<h4 id="org82f78ed"><span class="section-number-4">7.2.2</span> Inferential Analysis</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<p>
+As the term suggest, analysis to derive inferences from a data is called inferential analysis. Objective of Inferential Analysis is to produce actionable information which can be used to create business strategies by figuring out the relationship between variables, level and other factors involved in a study.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org810d242" class="outline-3">
+<h3 id="org810d242"><span class="section-number-3">7.3</span> Mean, Median, Mode and Range</h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<div id="outline-container-org5dd0498" class="outline-4">
+<h4 id="org5dd0498"><span class="section-number-4">7.3.1</span> Mean</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<ul class="org-ul">
+<li>Mean is sum of all observations in a sample divided by the total number of observations</li>
+
+<li><p>
+Example:
+</p>
+<pre class="example" id="orgf670a47">
+4,3,13,26
+Total Observations = 4
+Mean = (4+3+13+26)/4 = 11.5
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgec2604b" class="outline-4">
+<h4 id="orgec2604b"><span class="section-number-4">7.3.2</span> Median</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<ul class="org-ul">
+<li>Median is the middle most observation when you arrange data in ascending order. Median is such that 50% of the observations are above the median and 50% of the observations are below the median</li>
+
+<li>Median for odd numbers = number of observation + 1/2 (the formula yields the serial number)</li>
+
+<li><p>
+Example:
+</p>
+
+<pre class="example" id="orge9c5ba1">
+4,3,13,26,36
+Median = 5+1/2 = 3
+It means 3rd number (after organizing all the numbers in ascending order), in this case it is 13
+</pre></li>
+
+<li>If the numbers are even like in the given below example, we need to add 2 numbers in the middle and take the mean of them as median.</li>
+
+<li><p>
+Example:
+</p>
+
+<pre class="example" id="org22cca98">
+4,3,13,26
+In ascended order - 3,4,13,26
+Mean of 2 middle numbers = 4+13/2 = 8.5
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3f285af" class="outline-4">
+<h4 id="org3f285af"><span class="section-number-4">7.3.3</span> Mode</h4>
+<div class="outline-text-4" id="text-7-3-3">
+<ul class="org-ul">
+<li>Most frequent number in a given series is called mode.</li>
+
+<li><p>
+Example:
+</p>
+
+<pre class="example" id="org77ab9fe">
+1,3,5,3,9,12
+</pre></li>
+
+<li>3 appears twice whereas other numbers appear only once, therefore it is mode.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga6e0f64" class="outline-4">
+<h4 id="orga6e0f64"><span class="section-number-4">7.3.4</span> Range</h4>
+<div class="outline-text-4" id="text-7-3-4">
+<ul class="org-ul">
+<li>Ranger is the difference between max and min value</li>
+
+<li><p>
+Example:
+</p>
+
+<pre class="example" id="orgd6b46ba">
+1,3,5,3,9,12
+Range = 12-1 = 1
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7d8fe2c" class="outline-3">
+<h3 id="org7d8fe2c"><span class="section-number-3">7.4</span> Variance and Standard Deviation</h3>
+<div class="outline-text-3" id="text-7-4">
+</div>
+<div id="outline-container-orgf8f9c76" class="outline-4">
+<h4 id="orgf8f9c76"><span class="section-number-4">7.4.1</span> Variance</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<ul class="org-ul">
+<li>It is squared difference from the mean or a number, add all the difference &amp; calculate its mean. Note if you are taking a sample insted of population, you should use N-1.</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right"><b>Population</b></th>
+<th scope="col" class="org-right"><b>Value - Mean</b></th>
+<th scope="col" class="org-right">Variance (Squared)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">-4.8</td>
+<td class="org-right">23.04</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">-2.8</td>
+<td class="org-right">7.84</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">1.2</td>
+<td class="org-right">1.44</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">5.2</td>
+<td class="org-right">27.04</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">1.2</td>
+<td class="org-right">1.44</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">16.8</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">60.8</td>
+<td class="org-left">Sum</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">12.16</td>
+<td class="org-left">Variance</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">3.487119155</td>
+<td class="org-left">Standard Deviation</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>The smaller the variance, the closer the numbers are to the mean nand the larger the variance, the farther away the numbers are from the mean.</li>
+
+<li>In this table, add all the squared differences and calculate their mean</li>
+
+<li>Variance = 60.8/5 = 12/6</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge47c3e3" class="outline-4">
+<h4 id="orge47c3e3"><span class="section-number-4">7.4.2</span> Standard Deviation</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<ul class="org-ul">
+<li>It is the square root of variance and represented by sigma sign</li>
+
+<li>It represent the dispersion/spread of the sample</li>
+
+<li>It is the square root of variance</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right"><b>Sample</b></th>
+<th scope="col" class="org-right"><b>Value - Mean</b></th>
+<th scope="col" class="org-right">Squared</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">-4.4</td>
+<td class="org-right">19.36</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-right">-2.8</td>
+<td class="org-right">7.84</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">1.2</td>
+<td class="org-right">1.44</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-right">5.2</td>
+<td class="org-right">27.4</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-right">1.2</td>
+<td class="org-right">1.44</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">16.8</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">57.12</td>
+<td class="org-left">Sum</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">12.6</td>
+<td class="org-left">Variance</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">3.48</td>
+<td class="org-left">Standard Deviation</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Square root of 12.6 is 3.48 which is Standard Deviation</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57fd3f6" class="outline-3">
+<h3 id="org57fd3f6"><span class="section-number-3">7.5</span> Standard Error, Skewness with Kurtosis</h3>
+<div class="outline-text-3" id="text-7-5">
+</div>
+<div id="outline-container-orgb0c0444" class="outline-4">
+<h4 id="orgb0c0444"><span class="section-number-4">7.5.1</span> Standard Error</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<ul class="org-ul">
+<li>Sample Statistic = mean</li>
+
+<li>Standard deviation of the sample statistic is called standard error</li>
+
+<li>Several means can be calculated for several samples and their distribution is called sampling distribution of the sampling mean</li>
+
+<li>Standard error is the ratio of standard deviation and square root of the sample size</li>
+
+<li>For example: in the class of 60, you take a sample of 4</li>
+
+<li>Mean is 10 marks</li>
+
+<li>Standard deviation is 8</li>
+
+<li>Standard error for sampling distribution would be 8/square root of 4</li>
+
+<li>8/sqrt(4)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf96a6d9" class="outline-4">
+<h4 id="orgf96a6d9"><span class="section-number-4">7.5.2</span> Skewness</h4>
+<div class="outline-text-4" id="text-7-5-2">
+<ul class="org-ul">
+<li>Skewness is the measure of the asymmetry or deviation from the symmetry in statistical analysis. It is basically used to represent the difference between mean and median. Skewness is usually divided into positive and negative skewness.</li>
+
+<li><b>Positive Skewness</b>: When there are more values at positive side (right side) in a curved graph, it is called as positive skewed or right skewed.</li>
+
+<li><b>Negative Skewness</b>: When there are more values at negative side (left side) in a curved graph, it is called as negative skewed or left skewed.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdce65f3" class="outline-4">
+<h4 id="orgdce65f3"><span class="section-number-4">7.5.3</span> Kurtosis</h4>
+<div class="outline-text-4" id="text-7-5-3">
+<ul class="org-ul">
+<li>kurtosis is used to represent the <b>&ldquo;Peakness&rdquo;</b> of a distribution in probability. Kurtosis has following characteristics:
+
+<ul class="org-ul">
+<li>High Kurtosis: tall peak, rapid decline in the tails</li>
+<li>Low Kurtosis: flat peaks, gradual decline in the tails</li>
+<li>Extreme case: uniform distribution</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b19334" class="outline-3">
+<h3 id="org8b19334"><span class="section-number-3">7.6</span> P Value with Confidence Interval</h3>
+<div class="outline-text-3" id="text-7-6">
+</div>
+<div id="outline-container-org7a02adc" class="outline-4">
+<h4 id="org7a02adc"><span class="section-number-4">7.6.1</span> Normal Distribution</h4>
+<div class="outline-text-4" id="text-7-6-1">
+
+<div id="org265eb8c" class="figure">
+<p><img src="img_6.png" alt="img_6.png" width="750px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org35496e9" class="outline-4">
+<h4 id="org35496e9"><span class="section-number-4">7.6.2</span> Central Linit Theorem</h4>
+<div class="outline-text-4" id="text-7-6-2">
+<ul class="org-ul">
+<li>Irrespective of the nature of the distribution of the original population (right skewed or left skewed), the distribution of the sample will be a normal distribution as the size of the sample goes up</li>
+
+<li>Recomended number is 30</li>
+</ul>
+
+
+<div id="orgeefa7e7" class="figure">
+<p><img src="img_7.png" alt="img_7.png" width="750px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4982e2c" class="outline-4">
+<h4 id="org4982e2c"><span class="section-number-4">7.6.3</span> Confidence Level</h4>
+<div class="outline-text-4" id="text-7-6-3">
+<ul class="org-ul">
+<li>Confidence Interval is a interval value used to represent the interval for a population parameter where a sample will have high probably of having that parameter of interest based on sample data. Confidence Interval is a type of Interval Estimation Techniques.</li>
+
+<li>Confidence Interval is used to represent the probability and is expressed in precentage.</li>
+
+<li><b>Interval estimation</b> is the technique of using data to estimate an interval of probable values of an unknown population parameter.</li>
+
+<li><b>For example</b>: There is a population or data where value of a parameter is not known. If you conduct repeated sampling and conduct experiments using same procedure, certain value of intervals will contain the unknown parameter. If you conduct 100 test and 95 of them were found to contain the unknown parameter, your confidence interval will be 95%.</li>
+
+<li>Confidence interval = sample statistic + Margin of error</li>
+
+<li>where</li>
+
+<li>Maargine of error = Critical value * Standard error of statistic</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org59b6d8b"></a>How to Construct Confidence Level<br />
+<div class="outline-text-5" id="text-7-6-3-1">
+<ul class="org-ul">
+<li>Select a statistic that will be used to estimate a population parameter. We can use p value</li>
+
+<li>Select a confidence level</li>
+
+<li>Find the margin of error</li>
+</ul>
+
+
+<div id="org87acc79" class="figure">
+<p><img src="img_8.png" alt="img_8.png" width="750px" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+
+<div id="outline-container-org3cabf35" class="outline-4">
+<h4 id="org3cabf35"><span class="section-number-4">7.6.4</span> p-Value</h4>
+<div class="outline-text-4" id="text-7-6-4">
+<ul class="org-ul">
+<li>p-Value in statistic is used to measure the significance of results.</li>
+
+<li>p-Value is the number which is measured to gauge the strength of the data. Conclusions are made based on the following output</li>
+
+<li>P value less than 5% (0.05%) indicates higher statistical significance and approve rejection of null hypothesis which simply means that variable are strongly related to each other and final output.</li>
+
+<li>P value more that 5% (0.05&amp;) indicates lower statistical significance and support null hypothesis.</li>
+
+<li>P value close to 5% is considered borderline.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6418f18" class="outline-3">
+<h3 id="org6418f18"><span class="section-number-3">7.7</span> T test and F ratio</h3>
+<div class="outline-text-3" id="text-7-7">
+<p>
+There are two types
+</p>
+</div>
+
+<div id="outline-container-org75735ac" class="outline-4">
+<h4 id="org75735ac"><span class="section-number-4">7.7.1</span> T Test for dependent samples</h4>
+<div class="outline-text-4" id="text-7-7-1">
+<ul class="org-ul">
+<li>It is also known as <b>&ldquo;Matched-Pairs t Test&rdquo;</b>. It compares the mean of two samples which are related to each other. It is used when same sample could be used or tested under two conditions which are inter-related. For example, a group of persons undergoing machine learning training at a training center and then appering for exam. You can test the knowledge score of same group at the beining of the training and after training. Exams score to measure the difference in their skills due to the training course.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e32f05" class="outline-4">
+<h4 id="org4e32f05"><span class="section-number-4">7.7.2</span> T Test for independent samples</h4>
+<div class="outline-text-4" id="text-7-7-2">
+<ul class="org-ul">
+<li>It is one of the most widely used statistical calculation concept. It is primarily used to determine the difference between means for two groups.</li>
+
+<li>Now if we use the example mentioned under <b>&ldquo;T Test for Dependent Sample&rdquo;</b>, we can use the two randomly selected group from two different training institute preparing for machine learning and evaluate the difference in the mean of their scores after test.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org45520d3" class="outline-4">
+<h4 id="org45520d3"><span class="section-number-4">7.7.3</span> T Test</h4>
+<div class="outline-text-4" id="text-7-7-3">
+<p>
+Few important points
+</p>
+
+<ul class="org-ul">
+<li>Few important factors to mention here are</li>
+
+<li>Size of the sample (with bigger data more accuracy)</li>
+
+<li>Difference between means of groups should be big enpugh to indicte a substantial trend</li>
+
+<li>Average performance of the individuals is closer to the mean of their respective groups</li>
+
+<li>You should use one tailed test when you expect only one group&rsquo;s mean to change or when you expect changes to happen only in one direction whereas when you expect changes to move in any direction or any group can move either direction (up or down), you should use ywo tail t test.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf4e20f2" class="outline-4">
+<h4 id="orgf4e20f2"><span class="section-number-4">7.7.4</span> F Test</h4>
+<div class="outline-text-4" id="text-7-7-4">
+<ul class="org-ul">
+<li>It is test where distribution is F shaped. It is commonly used in ANOVA when means of the two population, having similar standard deviation, are equal.</li>
+
+<li>Critical value is selected using the f table and then it is used to accept or reject the null hypothesis</li>
+
+<li>F values are non-negative, distribution is asymmetric and two independent degrees of freedom, one for numerator and one for denominator.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd51c08c" class="outline-3">
+<h3 id="orgd51c08c"><span class="section-number-3">7.8</span> Hypothesis Testing</h3>
+<div class="outline-text-3" id="text-7-8">
+</div>
+<div id="outline-container-org76f370f" class="outline-4">
+<h4 id="org76f370f"><span class="section-number-4">7.8.1</span> Types of Hypothesis</h4>
+<div class="outline-text-4" id="text-7-8-1">
+<ul class="org-ul">
+<li><b>Null Hypothesis</b>: Null hypothesis simply means that there is no relation between the two variable and data scientist use it to disapprove and reject a theory.</li>
+
+<li>For example, if a ecommerce portal propose a theory that sales are up during a particular time in the year, null hypothesis will suggest that <b>&ldquo;sales are not up during that time of year or time is not significant and has to nothing with the rising sales&rdquo;</b>.</li>
+
+<li>Null Hypothesis is represented by H<sub>0</sub></li>
+
+<li>Null Hypothesis implies that an event is not due to any impact of the variable but, due to PURE CHANGE</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a9f7a4" class="outline-4">
+<h4 id="org9a9f7a4"><span class="section-number-4">7.8.2</span> Alternative Hypothesis</h4>
+<div class="outline-text-4" id="text-7-8-2">
+<ul class="org-ul">
+<li>Alternative hypothesis is the exact opposite of the null hypothesis. SO if we go back to our last example about sales in particular time of the year.</li>
+
+<li>Alternative hypothesis will suggest that particular time is responsible for the increase in sale.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga0b0a0f" class="outline-4">
+<h4 id="orga0b0a0f"><span class="section-number-4">7.8.3</span> Hypothesis Testing</h4>
+<div class="outline-text-4" id="text-7-8-3">
+<ul class="org-ul">
+<li>You run various algorithms like Naive Bayes, KNN etc to accept or reject null hypothesis.</li>
+
+<li>Usually if the p value is less than critical value or value of significance, you reject the null hypothesis</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf06247f" class="outline-2">
+<h2 id="orgf06247f"><span class="section-number-2">8</span> ANOVA with R</h2>
+</div>
+<div id="outline-container-org54f38f1" class="outline-2">
+<h2 id="org54f38f1"><span class="section-number-2">9</span> Linear Regression with R</h2>
+</div>
+<div id="outline-container-orgc0e84b0" class="outline-2">
+<h2 id="orgc0e84b0"><span class="section-number-2">10</span> Logistic Regression with R</h2>
+</div>
+<div id="outline-container-org6aeae40" class="outline-2">
+<h2 id="org6aeae40"><span class="section-number-2">11</span> Dimension Reduction Technique</h2>
+</div>
+<div id="outline-container-org62fe25b" class="outline-2">
+<h2 id="org62fe25b"><span class="section-number-2">12</span> Clustering with K-Means</h2>
+</div>
+<div id="outline-container-org70672a8" class="outline-2">
+<h2 id="org70672a8"><span class="section-number-2">13</span> Tree based models - CART &amp; Random Forest</h2>
+</div>
+<div id="outline-container-org93d5ef8" class="outline-2">
+<h2 id="org93d5ef8"><span class="section-number-2">14</span> KNN - K Nearest Model</h2>
+</div>
+<div id="outline-container-orgf045bee" class="outline-2">
+<h2 id="orgf045bee"><span class="section-number-2">15</span> Naive Bayes</h2>
+</div>
+<div id="outline-container-org24c283e" class="outline-2">
+<h2 id="org24c283e"><span class="section-number-2">16</span> Neural Networks with R</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: April 11 2021 to April 18 2021</p>
+<p class="author">Author: Prof. T. R. Mahore</p>
+<p class="date">Created: 2021-04-14 Wed 09:59</p>
+</div>
+</body>
+</html>
