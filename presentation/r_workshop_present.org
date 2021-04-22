@@ -9,16 +9,6 @@
 #+AUTHOR: Prof. T. R. Mahore
 #+DATE: April 11 2021 to April 18 2021
 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
-#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-#+HTML_HEAD: <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
-#+SETUPFILE: https://github.com/paulzql/org-html-themes/blob/master/setup/theme-readtheorg.setup
-
-
-
 * Contents
 
 1. Machine Learning and Data Science Introduction
@@ -738,7 +728,7 @@ As the term suggest, analysis to derive inferences from a data is called inferen
 #+ATTR_HTML: :width 750px
 [[file:img_6.png]]
 
-*** Central Linit Theorem
+*** Central Limit Theorem
 
 - Irrespective of the nature of the distribution of the original population (right skewed or left skewed), the distribution of the sample will be a normal distribution as the size of the sample goes up
 
@@ -773,7 +763,6 @@ As the term suggest, analysis to derive inferences from a data is called inferen
 
 #+ATTR_HTML: :width 750px
 [[file:img_8.png]]
-
 
 *** p-Value
 
@@ -823,7 +812,6 @@ Few important points
 - F values are non-negative, distribution is asymmetric and two independent degrees of freedom, one for numerator and one for denominator.
 
 ** Hypothesis Testing
-
 *** Types of Hypothesis
 
 - *Null Hypothesis*: Null hypothesis simply means that there is no relation between the two variable and data scientist use it to disapprove and reject a theory.
@@ -846,7 +834,212 @@ Few important points
 
 - Usually if the p value is less than critical value or value of significance, you reject the null hypothesis
 
+* Machine Learning Fundamentals
+
+** Machine Learning Models
+
+- Regression (Suprevised Learning)
+- Classification (Supervised Learning)
+- Clustering (Unsupervised Learning)
+
+*** Steps to Create ML Model
+
+1. Data procurement/gathering
+2. Data modification/cleaning
+3. Model selection
+4. Training
+5. Evaluation
+6. Prediction
+
+** Regression
+
+- Algorithm produces continous variables.
+
+- It is used to relate independent (predictor) & dependent (target) variables
+
+- In regression inputs are called predictor variable, explanatory variables, regressors
+
+- Dependent variable is dependent, explained variable or regressand
+
+- Predictors are used to produce an output which is continous response variable
+
+- A best fitted line is drawn which minimizes the distance between various points
+
+*** Types of Regression
+
+1. Linear Regression
+2. Logistic Regression
+3. Polynomial Regression
+
+*** Applications
+
+1. Sales Forecasting
+2. Demand supply forecasting
+3. Operation's cost optimization
+4. Insurance industry - claim predication
+5. Banking
+6. Healthcare industry - cost prediction
+
+** Classification
+
+- Classification algorithm are used for categorical variables for example spam or Not spam (ham)
+
+- In classification, you classify things based on the shared features or properties
+
+- It can also be used for more advance classifications like image classification
+
+- Please note if your ML model is not trained on something, it won't work on it. For example : if your model has been trained on hand written numbers, it won't work on alphabets
+
+*** Types of Classification
+
+1. Naive Bayes
+2. KNN
+3. Artificial Neural Network (ANN)
+4. Support Vector Machines (SVN)
+5. Random forest, CART (decision trees)
+
+*** Applications
+
+1. Cancer detection
+2. Email spam detection
+3. Marketing campaigns to determine conversion rate
+
+** Clustering
+
+- Unsupervised Machine Learning technique
+
+- Clustering is done to group similar objects or data points
+
+- it creates segment with similar data points
+
+- Data points in each clusters are different to other clusters in the same data set
+
+- Clustering helps by reducing a large data sets into few clusters
+
+*** Grouping in Clustering
+
+1. Euclidian distance (most common): sqrt(6^{2} + 4^{2}) = 7.211103
+2. Chebyshey Distance: Max(6,4) = 6
+3. Manhattan Distance: 6+4=10
+
+*** Types of Clustering
+
+1. Hierarchical
+2. Partition
+3. Agglomerative
+4. K-Means
+
+*** Dimension Reduction
+
+- Dimension reduction is needed if there are too many variables
+- Variables are reduced by reducing the unnecessary variables
+- It's like feature selection
+- It improves the time required for training a model
+- It improves the model performance by reducing the redundancies
+
+*** Dimension Reduction Techniques
+
+1. Principal Componenet Analysis
+2. Factor Analysis
+
 * ANOVA with R
+
+- Analysis of Variance which is also known as ANOVA, is the statistical model which is used to measure the significant variation between groups of variables where usually means are used to measure the difference. It basically inform user about the difference in the mean of multiple groups for statistical significance.
+
+- ANOVA was developed by R.A.Fisher
+
+- The dependent variable is the variable of interest & it is continous variable
+
+- The treatment variable is the independent variable and it is a categorical variable
+
+** Types of ANOVA
+
+1. One way ANOVA
+2. Two way ANOVA
+
+** Asumption of ANOVA
+
+- Dependent variable are normally distributed and have same variance
+- Errors are normally distributed and are independent
+
+** ANOVA
+
+- When you have more than 2 groups, you use ANOVA
+- t-test and z-test are similar tests
+- Test equlity of the means for more than 2 population/sample/group
+- If you were to use t-test or z-test for pairwise combination, probability of *type 1 error* goes up
+
+** Classification Error
+
+- Type-1 error: False Positive = rejection of true null hypothesis
+
+- Type-2 error: False Negative = Failure to reject null hypothesis
+
+- Example: Ran a ML model to detect cancer patient
+
+|------+---------------+---------------+----------------+----------------|
+| Name | True Positive | True Negative | False Positive | False Negative |
+|------+---------------+---------------+----------------+----------------|
+| A    | Y             | N             | N              | N              |
+| B    | N             | Y             | N              | N              |
+| C    | N             | N             | Y              | N              |
+| D    | N             | N             | N              | Y              |
+|------+---------------+---------------+----------------+----------------|
+
+** ANOVA
+
+- ANOVA is governed by f-stats. ANOVA simply tells that there is difference in mean in the groups, it doesn't tell where is the difference. To know where is the difference, we perform post-hoc test
+
+- Example of application:
+
+  + Effect of socioeconomic status (SES) and gender on body mass index of kids in the age range of 6-10 years
+
+  + Whether a new drug influences the cure rate of a disease
+
+  + Effect of a vitamin c on common cold among school children
+
+** 2 way ANOVA Types
+
+- Two way ANOVA with replication
+
+- Two way anova without replication
+
+- For example, we ran a survey on weekdays in 5 stores. If the survey was only performed once a day, it will be two way anova without replication. But if the survey was repeated few times everyday like noon, evening etc, it will be two way ANOVA with replication
+
+- Important point in 2 way ANOVA is interaction effect. Suppose there is a sample, few are having diabetes and few are having hypertension and then there is a third group with both-diabetes & hypertension. If we are asuming the probablity of these 3 groups towards cardiac problem like heart attack, probability will be highest in third group due to cumulative effect.
+
+- So let's say patients with diabetes, their probability is 0.3
+
+- Group II with hypertension, their probability is 0.4
+
+- Group III with both will have probability 0.9 (more than compined) due to interaction effect
+
+** Steps to conduct ANOVA
+
+1. Identify the independent variable and dependent variable
+2. Test for assumption
+3. Decompose the total variation into between group variable and within group variation
+
+** Abrivation in ANOVA
+
+1. SS = Sum of squares
+2. DF = degrees of freedom
+3. MS = mean square
+4. F ststs = F statistics, between group variance / within group variance
+5. P value (actual significance level)
+6. F-cric = F critical
+
+** Steps to conduct ANOVA in R
+
+1. Use summary & str functions to look in the data
+2. Identify all the variables you need for analysis
+3. Use visualization to get better insight
+4. Perform normalcy test using cat and cat(shapiro.test)
+5. Perform leveneTest
+6. Perform Bartlett.test
+7. aov command to run anova: aov(dependent variable, independent variable)
+8. Post hoc test - TukeyHSD(aov1)
+
 * Linear Regression with R
 * Logistic Regression with R
 * Dimension Reduction Technique

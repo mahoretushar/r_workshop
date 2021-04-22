@@ -10,6 +10,7 @@
 #setwd("/Users/me.wolf/programming/r/r_workshop")
 
 Titanicdata <- read.csv("train_titanic.csv", header = TRUE)
+summary(Titanicdata)
 
 str(Titanicdata)
 library(Amelia)
